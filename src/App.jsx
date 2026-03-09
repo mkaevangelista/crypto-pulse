@@ -1,23 +1,45 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { CryptoProvider } from "./context/CryptoContext";
+
 import Home from "./pages/Home";
 import Analysis from "./pages/Analysis";
 
-function App() {
-  return (
-    <CryptoProvider>
-      <Router>
-        <nav>
-          <Link to="/">Market</Link> |
-          <Link to="/analysis">Analysis</Link>
-        </nav>
+import "./App.css";
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/analysis" element={<Analysis />} />
-        </Routes>
-      </Router>
+function App() {
+
+  return (
+
+    <CryptoProvider>
+
+      <BrowserRouter>
+
+        <div className="app-container">
+
+          <nav className="navbar">
+
+            <h2 className="logo">CRYPTO-PULSE</h2>
+
+            <div className="nav-links">
+              <Link to="/">Market</Link>
+              <Link to="/analysis">Analysis</Link>
+            </div>
+
+          </nav>
+
+          <Routes>
+
+            <Route path="/" element={<Home />} />
+            <Route path="/analysis" element={<Analysis />} />
+
+          </Routes>
+
+        </div>
+
+      </BrowserRouter>
+
     </CryptoProvider>
+
   );
 }
 

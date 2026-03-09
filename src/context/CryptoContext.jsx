@@ -1,16 +1,18 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CryptoContext = createContext();
 
-export const CryptoProvider = ({ children }) => {
+export function CryptoProvider({ children }) {
+
   const [coins, setCoins] = useState([]);
-  const [currency, setCurrency] = useState("USD");
 
   return (
-    <CryptoContext.Provider value={{ coins, setCoins, currency, setCurrency }}>
+    <CryptoContext.Provider value={{ coins, setCoins }}>
       {children}
     </CryptoContext.Provider>
   );
-};
+}
 
-export const useCrypto = () => useContext(CryptoContext);
+export function useCrypto() {
+  return useContext(CryptoContext);
+}
